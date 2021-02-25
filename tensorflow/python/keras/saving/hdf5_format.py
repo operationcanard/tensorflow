@@ -668,6 +668,8 @@ def load_weights_from_hdf5_group(f, layers):
   filtered_layers = []
   for layer in layers:
     weights = _legacy_weights(layer)
+    if layer.name.startswith("anchors_"):
+      continue
     if weights:
       filtered_layers.append(layer)
 
